@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dad Joke Soundboard 🥁 | Master's Graduation Edition</title>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+    <h1>Dad Joke Soundboard 🥁</h1>
+
+    <!-- Master's Graduation Tribute Banner -->
+    <section class="tribute-card" aria-label="Graduation Tribute to Paul Bikundo">
+      <div class="tribute-badge">🎓 MASTER'S GRADUATE 🎓</div>
+      <h2>Congratulations, Paul Bikundo, M.Sc.!</h2>
+      <p class="tribute-subtext">
+        A custom soundboard built in honor of the brand new Master's degree holder! 🚀
+      </p>
+      <div class="tribute-actions">
+        <button id="grad-confetti-btn" type="button" aria-label="Throw graduation confetti for Paul Bikundo">
+          🎉 Celebrate Paul!
+        </button>
+      </div>
+    </section>
+
+    <!-- Feature 1: Dad Joke Banner & Dad Voice (TTS) -->
+    <section class="joke-card">
+      <p id="joke-text" aria-live="polite">Click "Get Joke" for pure comedy gold!</p>
+      <div class="joke-actions">
+        <button id="get-joke-btn" type="button">🎲 Get Joke</button>
+        <button id="tts-btn" type="button">🔊 Read Aloud</button>
+        <button id="download-joke-btn" type="button">🖼️ Download Meme Poster</button>
+      </div>
+    </section>
+
+    <!-- Feature: Reaction Bar -->
+    <div class="reaction-bar" role="group" aria-label="Reaction Buttons">
+      <button class="reaction-btn" id="react-eyeroll" type="button">Eye Roll 🙄</button>
+      <button class="reaction-btn" id="react-facepalm" type="button">Facepalm 🤦‍♂️</button>
+      <button class="reaction-btn" id="react-confetti" type="button">Lawnmower Laugh 😂</button>
+    </div>
+
+    <!-- Feature 3: Groan-o-Meter -->
+    <section class="meter-container" aria-label="Groan-o-Meter Rating">
+      <div class="meter-label">
+        <span>Eye Roll 🙄</span>
+        <span id="meter-score">Comedy Gold 🏆</span>
+      </div>
+      <div class="meter-track" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="meter-progress">
+        <div id="meter-bar" style="width: 50%;"></div>
+      </div>
+    </section>
+
+    <!-- Feature 2: Pitch / Speed Slider -->
+    <section class="pitch-control">
+      <label for="pitch-slider">
+        <span>Voice Pitch / Speed:</span>
+        <span id="pitch-val">1.0x</span>
+      </label>
+      <input type="range" id="pitch-slider" min="0.5" max="2.0" step="0.1" value="1.0" aria-label="Voice Pitch and Speed Slider">
+    </section>
+
+    <!-- Controls & Theme Toggle -->
+    <div class="controls" role="toolbar" aria-label="Soundboard Controls">
+      <button id="mode-toggle" type="button">Mode: 🎭 Laugh Track</button>
+      <button id="theme-toggle" type="button">Theme: 🍔 BBQ Mode</button>
+      <button id="record-btn" type="button">🎙️ Record Pad</button>
+      <button id="panic-btn" type="button" class="panic-danger">🚨 Panic Combo</button>
+      <button id="stop-all-btn" type="button" class="stop-btn">🛑 Stop All</button>
+      <button id="share-btn" type="button">🔗 Share Combo</button>
+    </div>
+
+    <!-- Soundboard Grid -->
+    <section class="grid" id="soundboard" role="region" aria-label="Soundboard Pads"></section>
+
+    <!-- Feature: Dad Hall of Fame Stats -->
+    <section class="stats-container" aria-label="Soundboard Statistics">
+      <h3>🏆 Dad Hall of Fame Stats</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span>Jokes Told</span>
+          <strong id="stat-jokes">0</strong>
+        </div>
+        <div class="stat-item">
+          <span>Groans Induced</span>
+          <strong id="stat-groans">0</strong>
+        </div>
+        <div class="stat-item">
+          <span>Panic Hits</span>
+          <strong id="stat-panics">0</strong>
+        </div>
+      </div>
+      <button id="reset-stats-btn" type="button" class="btn-sm">🗑️ Reset Stats</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
